@@ -136,35 +136,83 @@ console.log('mexicanFood from filterExample', mexicanFood)
 
 
 //Reminder: Do not move on to problem one until understand the example completely!!
-//1. Create a function that will return all dishes with the cuisine type of "vegetarian"
+//1. Create a function that will return all dishes with the cuisine type of "vegetarian" (lasagna, falafel, chili)
 //Filter
 
 function problemOne(){
 
     let results;
+    results = dishes.filter(function(el){
+        console.log("el inside problemOne's filter:", el)
+        if(el.cuisine === "Vegetarian"){
+            return true;
+        }
+        else{
+            return false;
+        }})
 
     return results;
 }
 
+let vegetarianFood = problemOne();
+console.log(`vegetarianFood from problemOne`, vegetarianFood)
+
 //2. Create a function that will prompt the user to enter a cuisine type and then return all dishes that match that type
 //Filter
 
+function problemTwo(){
 
+}
 
-//3. Create a function that will return all dishes with the cuisine type of "Italian" and a serving size greater than 5.
+//3. Create a function that will return all dishes with the cuisine type of "Italian" and a serving size greater than 5. (pizza, spaghetti, ravioli)
+//Filter
+
+function problemThree(){
+
+    let results;
+    results = dishes.filter(function(el){
+        console.log("el inside problemThree's filter:", el)
+        if(el.cuisine === "Italian"){
+            return true;
+        }
+        else{
+            return false;
+        }})
+
+    return results;
+}
+
+let italianFood = problemThree();
+// let returnLarger = (arr, 5) => arr.filter(servings => servings > 5);
+
+console.log(`italianFood from problemThree`, italianFood)
+// console.log(returnLarger())
+
+//4. Create a function that will return only dishes whose id number matches their serving count. (spaghetti and chili)
 //Filter
 
 
 
-//4. Create a function that will return only dishes whose id number matches their serving count.
+//5. Create a function that will return only dishes whose serving count is even. (pizza, spaghetti, ravioli, enchiladas, tacos, elote, corned beef & cabbage, beef stew, lasagna, pho)
 //Filter
 
+function problemFive(){
 
+    let results;
+    results = dishes.filter(function(el){
+        console.log("el inside problemFive's filter:", el)
+        if(el.servings === "even"){
+            return true;
+        }
+        else{
+            return false;
+        }})
 
-//5. Create a function that will return only dishes whose serving count is even.
-//Filter
+    return results;
+}
 
-
+// let servingCount = problemFive();
+// console.log(`italianFood from problemFive`, servingCount)
 
 //6. Create a function that will return dishes whose ingredients array INCLUDES "chickpea".
 //Hint: You do not want to check the array's indexes to find out what the array INCLUDES.
