@@ -233,11 +233,54 @@ console.log(`italianFood from problemFive`, servingCount);
 //Double Hint: Research 'javascript does array include item'
 //Filter
 
+function findChickpeaDishes(dishes) {
+    return dishes.filter((dish) => dish.ingredients.includes("chickpea"));
+}
+
+const Dishes = [
+    {name: "Falafel", ingredients: ["chickpea", "parsley"]},
+    {name: "Chili", ingredients: ["tomato", "chickpea"]}
+];
+
+const chickpeaDishes = findChickpeaDishes(dishes);
+console.log(chickpeaDishes);
+
 
 
 //7. Create a function that will prompt the user to type the name of one ingredient. Then use a filter to find all the dishes whose ingredients array INCLUDES that ingredient. Return the new array.
 //Filter
 
+function filterDishesByIngredient(dishes) {
+    const ingredient = prompt("Enter an ingredient: ");
+    const filteredDishes = dishes.filter((dish) => dish.ingredients.includes(ingredient));
+    return filteredDishes;
+}
+
+const sameIngredientDishes = [
+    {
+        name: "Pizza",
+        ingredients: ["tomato", "cheese"]
+    },
+    {
+        name: "Spaghetti",
+        ingredients: ["tomato", "cheese"]
+    },
+    {
+        name: "Elote",
+        ingredients: ["corn", "cheese"]
+    },
+    {
+        name: "Beef Stew",
+        ingredients: ["beef", "tomato"]
+    },
+    {
+        name: "Crepes",
+        ingredients: ["flour", "sugar"]
+    },
+];
+
+const filteredDishes = filterDishesByIngredient(dishes);
+console.log(filteredDishes);
 
 
 //8a. Create a function that will return an array of the string cuisine types. Ie, ["Italian", "Italian", "Mexican", ...]
@@ -270,7 +313,18 @@ console.log(italianCuisineDishes);
 
 //10. Create a function that will use advanced array methods on the 'dishes' array and return the result ["Vegetarian Lasagna", "Vegetarian Falafel", "Vegetarian Chili"]
 
+function getVegetarianDishes(dishes){
+    return dishes.filter(dish => dish.isVegetarian).map(dish => dish.name);
+}
 
+const vegDishes = [
+    {name: "Vegetarian Lasagna", isVegetarian: true},
+    {name: "Vegetarian Falafel", isVegetarian: true},
+    {name: "Vegetarian Chiil", isVegetarian: true}
+];
+
+const vegetarianDishes = getVegetarianDishes(dishes);
+console.log(vegetarianDishes);
 
 
 
