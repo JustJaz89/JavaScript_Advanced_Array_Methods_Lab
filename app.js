@@ -119,7 +119,6 @@ function filterExample(){
     //Debug tip: Use a console.log(el) inside the filter function to get a visualization of what el represents and see all its properties! This helps you to know what you can access with dot notation inside the filter. Do this every time you use a .filter or else you are working in the dark!
     let results;
     results = dishes.filter(function(el){
-        console.log("el inside filterExample's filter: ", el)
         if(el.cuisine === "Mexican"){
             return true;
         }
@@ -131,7 +130,7 @@ function filterExample(){
 }
 
 let mexicanFood = filterExample();
-console.log('mexicanFood from filterExample', mexicanFood)
+console.log('mexicanFood from filterExample', mexicanFood);
 
 
 
@@ -143,7 +142,6 @@ function problemOne(){
 
     let results;
     results = dishes.filter(function(el){
-        console.log("el inside problemOne's filter:", el)
         if(el.cuisine === "Vegetarian"){
             return true;
         }
@@ -155,14 +153,23 @@ function problemOne(){
 }
 
 let vegetarianFood = problemOne();
-console.log(`vegetarianFood from problemOne`, vegetarianFood)
+console.log(`vegetarianFood from problemOne`, vegetarianFood);
 
 //2. Create a function that will prompt the user to enter a cuisine type and then return all dishes that match that type
 //Filter
 
 function problemTwo(){
 
+    let userInput = prompt("Please enter a cuisine type: ")
+    let matchingCuisines = dishes.filter(function(dish){
+        if(dish.cuisine === userInput){
+            return true;
+        }
+    })
 }
+
+let userResult = problemTwo()
+console.log(userResult);
 
 //3. Create a function that will return all dishes with the cuisine type of "Italian" and a serving size greater than 5. (pizza, spaghetti, ravioli)
 //Filter
@@ -172,7 +179,7 @@ function problemThree(){
     let results;
     results = dishes.filter(function(el){
         console.log("el inside problemThree's filter:", el)
-        if(el.cuisine === "Italian"){
+        if(el.cuisine === "Italian" && el.cuisine.servings > 5){
             return true;
         }
         else{
@@ -185,7 +192,7 @@ function problemThree(){
 let italianFood = problemThree();
 // let returnLarger = (arr, 5) => arr.filter(servings => servings > 5);
 
-console.log(`italianFood from problemThree`, italianFood)
+console.log(`italianFood from problemThree`, italianFood);
 // console.log(returnLarger())
 
 //4. Create a function that will return only dishes whose id number matches their serving count. (spaghetti and chili)
@@ -208,7 +215,7 @@ function problemFive(){
     let results;
     results = dishes.filter(function(el){
         console.log("el inside problemFive's filter:", el)
-        if(el.servings === "even"){
+        if(el.servings % 2 === 0){
             return true;
         }
         else{
@@ -219,7 +226,7 @@ function problemFive(){
 }
 
 let servingCount = problemFive();
-console.log(`italianFood from problemFive`, servingCount)
+console.log(`italianFood from problemFive`, servingCount);
 
 //6. Create a function that will return dishes whose ingredients array INCLUDES "chickpea".
 //Hint: You do not want to check the array's indexes to find out what the array INCLUDES.
@@ -236,11 +243,29 @@ console.log(`italianFood from problemFive`, servingCount)
 //8a. Create a function that will return an array of the string cuisine types. Ie, ["Italian", "Italian", "Mexican", ...]
 //Map
 
+function problemEight(){
+
+    let matchingCuisines = dishes.map(function(dish){
+        return dish.cuisine
+    })
+    return matchingCuisines
+}
+
+let resultEight = problemEight()
+console.log(resultEight);
 
 
 //9. Create a function that will return an array of strings, with the cuisine type appended to the start of the dish's name. Ie, ["Italian Pizza", "Italian Spaghetti", ...]
 //Map 
 
+function problemNine(dishes, cuisine){
+    return dishes.map((dish) => cuisine + " " + dish);
+}
+
+const italianDishes = ["Pizza", "Spaghetti", "Ravioli"];
+const italianCuisineDishes = problemNine(italianDishes, "Italian");
+
+console.log(italianCuisineDishes);
 
 
 //10. Create a function that will use advanced array methods on the 'dishes' array and return the result ["Vegetarian Lasagna", "Vegetarian Falafel", "Vegetarian Chili"]
