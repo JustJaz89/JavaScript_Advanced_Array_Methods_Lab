@@ -336,7 +336,49 @@ console.log(vegetarianDishes);
 //Hint: You do not want to check the array's indexes to find out what the array INCLUDES.
 //Filter
 
+function findTomatoAndCheeseDishes(dishes){
+    return dishes.filter(dish => dish.ingredients.includes("tomato") || dish.ingredients.includes("cheese"));
+}
+
+const tomatoAndCheeseDishes = findTomatoAndCheeseDishes(dishes);
+console.log(tomatoAndCheeseDishes);
+
 //12. Create a function that will return the total serving count of all dishes.
 //Must use Reduce, not a loop.
 
+function getTotalServingCount(dishes) {
+    const servings = dishes.map(dish => dish.servings);
+    const totalServingCount = servings.reduce((total, count) => total + count, 0);
+    return totalServingCount;
+  }
+
+  const totalServingCount = getTotalServingCount(dishes);
+  console.log(totalServingCount);
+
 //13. Create a function that will return an array of any objects that do not share a cuisine type with any other objects.
+
+function uniqueCuisineObjects(objects){
+    const cuisineTypes = {};
+    const uniqueObjects = [];
+
+    objects.forEach(obj => {
+        const cuisine = obj.cuisine;
+        if (!cuisineTypes[cuisine]) {
+            cuisineTypes[cuisine] = [];
+        }
+        cuisineTypes[cuisine].push(obj);
+    });
+
+    Object.values(cuisineTypes).forEach(cuisineObjs => {
+        if (cuisineObjs.length === 1){
+            uniqueObjects.push(cuisineObjs[0]);
+        }
+    });
+
+    return uniqueObjects;
+}
+
+const objects = [{name: "Crepes", cuisine: "French"}];
+
+const uniqueObjects = uniqueCuisineObjects(objects);
+console.log(uniqueObjects);
